@@ -36,7 +36,19 @@ namespace ForTheWin.Steps
 
 
             var controller = new ServiceController(serviceName);
-            controller.Stop();
+
+            try
+            {
+                controller.Stop();
+            }
+            catch (InvalidOperationException)
+            {
+                // Ignoring.
+                // This can be thrown if the service was not started or if it does not exist.
+                // In the first case it is already in the desired state.
+                // In the second case it can be detected on Start.
+            }
+
             try
             {
                 controller.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(10));

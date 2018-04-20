@@ -121,6 +121,9 @@
   <data name="Epilog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\EpilogSetup-1.6.0-MultiArch.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="IISTracing2Syslog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\iisTracing2syslog.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Snare" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\SnareForWindows-4.0.1.1-MultiArch.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

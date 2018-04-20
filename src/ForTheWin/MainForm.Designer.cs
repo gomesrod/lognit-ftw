@@ -39,6 +39,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.header = new ForTheWin.HeaderBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.failedRequestsLogDir = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             this.installButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.installButton.Image = ((System.Drawing.Image)(resources.GetObject("installButton.Image")));
             this.installButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.installButton.Location = new System.Drawing.Point(204, 197);
+            this.installButton.Location = new System.Drawing.Point(248, 250);
             this.installButton.Name = "installButton";
             this.installButton.Size = new System.Drawing.Size(91, 53);
             this.installButton.TabIndex = 1;
@@ -64,10 +66,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(370, 13);
+            this.label1.Size = new System.Drawing.Size(425, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "This utility will install Snare and Epilog collectors pointing to a Lognit instan" +
-    "ce.";
+            this.label1.Text = "This utility will install Snare, Epilog and IISTracing collectors pointing to a L" +
+    "ognit instance.";
             // 
             // serverHostBox
             // 
@@ -76,7 +78,7 @@
             this.serverHostBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.serverHostBox.Location = new System.Drawing.Point(19, 114);
             this.serverHostBox.Name = "serverHostBox";
-            this.serverHostBox.Size = new System.Drawing.Size(373, 20);
+            this.serverHostBox.Size = new System.Drawing.Size(417, 20);
             this.serverHostBox.TabIndex = 4;
             this.serverHostBox.Text = "localhost:5140";
             // 
@@ -87,7 +89,7 @@
             this.logFileFormatBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logFileFormatBox.Location = new System.Drawing.Point(19, 165);
             this.logFileFormatBox.Name = "logFileFormatBox";
-            this.logFileFormatBox.Size = new System.Drawing.Size(373, 20);
+            this.logFileFormatBox.Size = new System.Drawing.Size(417, 20);
             this.logFileFormatBox.TabIndex = 5;
             this.logFileFormatBox.Text = "C:\\inetpub\\logs\\LogFiles\\W3SVC1\\u_ex%.log";
             // 
@@ -116,15 +118,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.installStatus.AutoSize = true;
             this.installStatus.BackColor = System.Drawing.Color.DimGray;
-            this.installStatus.Location = new System.Drawing.Point(19, 191);
+            this.installStatus.Location = new System.Drawing.Point(19, 244);
             this.installStatus.Name = "installStatus";
-            this.installStatus.Size = new System.Drawing.Size(373, 0);
+            this.installStatus.Size = new System.Drawing.Size(417, 0);
             this.installStatus.TabIndex = 8;
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.failedRequestsLogDir);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.closeButton);
             this.panel1.Controls.Add(this.logFileFormatBox);
             this.panel1.Controls.Add(this.installStatus);
@@ -137,8 +141,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(409, 263);
+            this.panel1.Size = new System.Drawing.Size(453, 316);
             this.panel1.TabIndex = 9;
+
             // 
             // closeButton
             // 
@@ -148,7 +153,7 @@
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
             this.closeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.closeButton.Location = new System.Drawing.Point(301, 197);
+            this.closeButton.Location = new System.Drawing.Point(345, 250);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(91, 53);
             this.closeButton.TabIndex = 9;
@@ -163,8 +168,28 @@
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(407, 52);
+            this.header.Size = new System.Drawing.Size(451, 52);
             this.header.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 202);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(184, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "IIS Failed Requests Tracing directory:";
+            // 
+            // failedRequestsLogDir
+            // 
+            this.failedRequestsLogDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.failedRequestsLogDir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.failedRequestsLogDir.Location = new System.Drawing.Point(19, 218);
+            this.failedRequestsLogDir.Name = "failedRequestsLogDir";
+            this.failedRequestsLogDir.Size = new System.Drawing.Size(417, 20);
+            this.failedRequestsLogDir.TabIndex = 11;
+            this.failedRequestsLogDir.Text = "C:\\inetpub\\logs\\FailedReqLogFiles\\W3SVC1";
             // 
             // MainForm
             // 
@@ -173,7 +198,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(409, 263);
+            this.ClientSize = new System.Drawing.Size(453, 316);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -200,5 +225,7 @@
         private System.Windows.Forms.FlowLayoutPanel installStatus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox failedRequestsLogDir;
     }
 }

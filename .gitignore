@@ -13,6 +13,8 @@ obj/
 TestResult.xml
 src/GlobalInfo.cs
 
+.vs
+
 build/
 pkg/
 

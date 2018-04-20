@@ -11,11 +11,23 @@ namespace ForTheWin.Steps
     {
         readonly string name;
         readonly byte[] executable;
+        readonly string argument;
+        readonly string copyTo;
 
-        public InstallApp(string name, byte[] executable)
+        public InstallApp(string name, byte[] executable, string argument)
         {
             this.name = name;
             this.executable = executable;
+            this.argument = argument;
+            this.copyTo = null;
+        }
+
+        public InstallApp(string name, byte[] executable, string copyTo, string argument)
+        {
+            this.name = name;
+            this.executable = executable;
+            this.copyTo = copyTo;
+            this.argument = argument;
         }
 
         public string Title
@@ -25,13 +37,26 @@ namespace ForTheWin.Steps
 
         public void Execute()
         {
-            var filename = Path.GetTempFileName();
-
+            string filename;
+            if (this.copyTo == null)
+            {
+                filename = Path.GetTempFileName();
+            }
+            else
+            {
+                filename = this.copyTo;
+                var fileInfo = new FileInfo(filename);
+                if (!fileInfo.Directory.Exists)
+                {
+                    fileInfo.Directory.Create();
+                }
+            }
+            
             try
             {
                 File.WriteAllBytes(filename, executable);
 
-                var psi = new ProcessStartInfo(filename, "/verysilent")
+                var psi = new ProcessStartInfo(filename, argument)
                 {
                     UseShellExecute = false
                 };
@@ -47,7 +72,8 @@ namespace ForTheWin.Steps
             }
             finally
             {
-                File.Delete(filename);
+                if (this.copyTo == null)
+                    File.Delete(filename);
             }
         }
     }

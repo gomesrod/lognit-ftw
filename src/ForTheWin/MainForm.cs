@@ -24,14 +24,18 @@ namespace ForTheWin
         {
             var logFileFormat = logFileFormatBox.Text;
             var serverHost = serverHostBox.Text;
+            var failedTracingDir = failedRequestsLogDir.Text;
 
             var statuses = new[]{ 
                 new StepStatus(new CheckIISLogsPath(logFileFormat)),
+                new StepStatus(new CheckIISFailedTracingPath(failedTracingDir)),
                 new StepStatus(new CheckServerAccessible(serverHost)),
-                new StepStatus(new InstallApp("Snare", Installers.Snare)),
+                new StepStatus(new InstallApp("Snare", Installers.Snare, "/verysilent")),
                 new StepStatus(new ConfigureSnare(serverHost)),
-                new StepStatus(new InstallApp("Epilog", Installers.Epilog)),
+                new StepStatus(new InstallApp("Epilog", Installers.Epilog, "/verysilent")),
                 new StepStatus(new ConfigureEpilog(serverHost, logFileFormat)),
+                new StepStatus(new InstallApp("IISTracing2Syslog", Installers.IISTracing2Syslog, Environment.GetEnvironmentVariable("ProgramFiles") + @"\IISTracing2Syslog\IISTracing2Syslog.exe" , "--install")),
+                new StepStatus(new ConfigureIISTracing2Syslog(serverHost, failedTracingDir)),
             };
 
             for (int i = 0; i < statuses.Length - 1; i++)

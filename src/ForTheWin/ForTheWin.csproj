@@ -94,15 +94,18 @@
     <Compile Include="StepStatus.Designer.cs">
       <DependentUpon>StepStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Steps\CheckIISFailedTracingPath.cs" />
     <Compile Include="Steps\CheckIISLogsPath.cs" />
     <Compile Include="Steps\CheckServerAccessible.cs" />
     <Compile Include="Steps\ConfigureApp.cs" />
     <Compile Include="Steps\ConfigureEpilog.cs" />
+    <Compile Include="Steps\ConfigureIISTracing2Syslog.cs" />
     <Compile Include="Steps\ConfigureSnare.cs" />
     <Compile Include="Steps\InstallApp.cs" />
     <Compile Include="Steps\IStep.cs" />
     <Compile Include="Steps\NoopStep.cs" />
     <Compile Include="Steps\StepException.cs" />
+    <Content Include="Resources\iisTracing2syslog.exe" />
     <EmbeddedResource Include="ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
     </EmbeddedResource>
